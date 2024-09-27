@@ -28,7 +28,7 @@ public class TestController {
     @GetMapping("/connection-test")
     public String connectionTest() {
 
-        String serverURL = "http://192.168.1.191:8081/test";
+        String serverURL = "http://192.168.1.191:8080/test";
 
         RestTemplate restTemplate = new RestTemplate();
 

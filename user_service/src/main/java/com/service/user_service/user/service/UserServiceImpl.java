@@ -6,8 +6,11 @@ import com.service.user_service.user.exception.UserException;
 import com.service.user_service.user.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -21,15 +24,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public ShowUserResDto showUser(ShowUserReqDto showUserReqDto) {
 
-        ShowUserResDto result = userMapper.showUser(showUserReqDto);
-
-        if(result == null) {
-            throw new UserException("해당 유저가 존재하지 않습니다.");
-        }
-
-        return result;
-
-        /*try {
+        try {
 
             ShowUserResDto result = userMapper.showUser(showUserReqDto);
 
@@ -42,6 +37,23 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
 
             throw new UserException(e.getMessage());
-        }*/
+        }
     }
+
+    @Override
+    public List<ShowUserResDto> showAllUsers() {
+
+        try {
+
+            List<ShowUserResDto> resultList = userMapper.showAllUsers();
+
+            return resultList;
+
+        } catch (Exception e) {
+
+            throw new UserException(e.getMessage());
+        }
+    }
+
+
 }

@@ -8,4 +8,9 @@
         WHERE id = #{id}
     </select>
 
+    <select id="showAllUsers" resultType="com.service.user_service.user.dto.ShowUserResDto">
+        SELECT id, name, age
+          FROM user
+    </select>
+
 </mapper>

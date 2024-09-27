@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -33,6 +34,18 @@ public class UserController {
         ShowUserResDto result = userService.showUser(ShowUserReqDto.builder().id(id).build());
 
         return ResponseEntity.status(HttpStatus.OK).headers(headers).body(result);
+    }
+
+    // 모든 유저 조회 api
+    @GetMapping
+    public ResponseEntity<?> showAllUsers() {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", StandardCharsets.UTF_8));
+
+        List<ShowUserResDto> resultList = userService.showAllUsers();
+
+        return ResponseEntity.status(HttpStatus.OK).headers(headers).body(resultList);
     }
 }
 
