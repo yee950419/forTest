@@ -36,6 +36,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).headers(headers).body(result);
     }
 
+
     // 모든 유저 조회 api
     @GetMapping
     public ResponseEntity<?> showAllUsers() {
