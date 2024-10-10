@@ -37,7 +37,6 @@ public class UserController {
     }
 
 
-
     // 모든 유저 조회 api
     @GetMapping
     public ResponseEntity<?> showAllUsers() {
